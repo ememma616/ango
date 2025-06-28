@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>換字式暗号一覧表</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>換字式暗号一覧表</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>番号</th>
+          <th>数字</th>
+          <th>アルファベット</th>
+          <th>元素記号</th>
+          <th>ギリシャ文字</th>
+          <th>ひらがな</th>
+          <th>干支</th>
+          <th>イタリア語</th>
+          <th>ロシア語</th>
+          <th>スペイン語</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <td>{{ row.number }}</td>
+          <td>{{ row.digit }}</td>
+          <td>{{ row.alphabet }}</td>
+          <td>{{ row.element }}</td>
+          <td>{{ row.greek }}</td>
+          <td>{{ row.hiragana }}</td>
+          <td>{{ row.eto }}</td>
+          <td>{{ row.italian }}</td>
+          <td>{{ row.russian }}</td>
+          <td>{{ row.spanish }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
