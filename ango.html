@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>換字式暗号一覧表</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    table { border-collapse: collapse; width: 100%; table-layout: fixed; }
+    th, td { border: 1px solid #999; padding: 4px; text-align: center; font-size: 14px; }
+    th { background-color: #f2f2f2; }
+    h1 { text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>換字式暗号一覧表</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>番号</th>
+        <th>数字</th>
+        <th>アルファベット</th>
+        <th>元素記号</th>
+        <th>ギリシャ文字</th>
+        <th>ひらがな</th>
+        <th>干支</th>
+        <th>イタリア語</th>
+        <th>ロシア語</th>
+        <th>スペイン語</th>
+      </tr>
+    </thead>
+    <tbody id="cipher-table-body">
+    </tbody>
+  </table>
+
+  <script>
+    const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    const elements = [
+      "H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar",
+      "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr",
+      "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te", "I", "Xe",
+      "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf",
+      "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "At", "Rn", "Fr", "Ra", "Ac", "Th",
+      "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr", "Rf", "Db", "Sg", "Bh", "Hs",
+      "Mt", "Ds", "Rg", "Cn", "Nh", "Fl", "Mc", "Lv", "Ts", "Og"
+    ];
+    const greek = ["α","β","γ","δ","ε","ζ","η","θ","ι","κ","λ","μ","ν","ξ","ο","π","ρ","σ","τ","υ","φ","χ","ψ","ω"];
+    const hiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん".split("");
+    const eto = ["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"];
+    const italian = "A B C D E F G H I L M N O P Q R S T U V Z".split(" ");
+    const russian = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ".split("");
+    const spanish = "A B C D E F G H I J K L M N Ñ O P Q R S T U V W X Y Z".split(" ");
+
+    const tbody = document.getElementById("cipher-table-body");
+
+    for (let i = 0; i < 118; i++) {
+      const tr = document.createElement("tr");
+      const createCell = (text) => {
+        const td = document.createElement("td");
+        td.textContent = text || "";
+        return td;
+      };
+      tr.appendChild(createCell(i + 1));                      // 番号
+      tr.appendChild(createCell(i + 1));                      // 数字
+      tr.appendChild(createCell(alphabets[i] || ""));         // アルファベット
+      tr.appendChild(createCell(elements[i] || ""));          // 元素記号
+      tr.appendChild(createCell(greek[i] || ""));             // ギリシャ文字
+      tr.appendChild(createCell(hiragana[i] || ""));          // ひらがな
+      tr.appendChild(createCell(eto[i] || ""));               // 干支
+      tr.appendChild(createCell(italian[i] || ""));           // イタリア語
+      tr.appendChild(createCell(russian[i] || ""));           // ロシア語
+      tr.appendChild(createCell(spanish[i] || ""));           // スペイン語
+      tbody.appendChild(tr);
+    }
+  </script>
+</body>
+</html>
